@@ -2,8 +2,7 @@
 
 import groovy.json.JsonSlurperClassic
 
-
-
+properties([pipelineTriggers([cron('H/15 * * * *')])])
 
 node {
 
