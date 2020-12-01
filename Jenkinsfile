@@ -2,7 +2,6 @@
 
 import groovy.json.JsonSlurperClassic
 
-properties([pipelineTriggers([cron('H/15 * * * *')])])
 
 node {
 
@@ -16,7 +15,7 @@ node {
     
     def toolbelt = tool 'toolbelt'
 
-
+    properties([pipelineTriggers([cron('H/15 * * * *')])])
     // -------------------------------------------------------------------------
     // Check out code from source control.
     // -------------------------------------------------------------------------
