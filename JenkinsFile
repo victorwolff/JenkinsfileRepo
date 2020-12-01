@@ -23,7 +23,9 @@ node {
         checkout scm
     }
 
-
+    triggers {
+        cron('H 16 * * *')
+    }
     // -------------------------------------------------------------------------
     // Run all the enclosed stages with access to the Salesforce
     // JWT key credentials.
