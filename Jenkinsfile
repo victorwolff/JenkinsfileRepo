@@ -4,7 +4,7 @@ import groovy.json.JsonSlurperClassic
 String cron_string = BRANCH_NAME == "master" ? "@hourly" : ""
 
 node {
-    stages{
+    
         def SF_CONSUMER_KEY=env.SF_CONSUMER_KEY
         def SF_USERNAME=env.SF_USERNAME
         def SERVER_KEY_CREDENTALS_ID=env.SERVER_KEY_CREDENTALS_ID
@@ -56,8 +56,7 @@ node {
                     }
                 }                      
             }
-        }
-    }
+        }    
 }
 
 def command(script) {
