@@ -3,7 +3,7 @@
 import groovy.json.JsonSlurperClassic
 
 
-node {
+z {
 
     def SF_CONSUMER_KEY=env.SF_CONSUMER_KEY
     def SF_USERNAME=env.SF_USERNAME
@@ -15,7 +15,7 @@ node {
     
     def toolbelt = tool 'toolbelt'
 
-    properties([pipelineTriggers([cron('H/15 * * * *')])])
+    properties([pipelineTriggers([cron('H 10 * * *')])])
     // -------------------------------------------------------------------------
     // Check out code from source control.
     // -------------------------------------------------------------------------
