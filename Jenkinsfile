@@ -15,7 +15,7 @@ pipeline {
         def PACKAGE_NAME='JenkinsfileRepo'
         def PACKAGE_VERSION
         def SF_INSTANCE_URL = env.SF_INSTANCE_URL ?: "https://login.salesforce.com"
-        
+        echo BUILD_CAUSE
         def toolbelt = tool 'toolbelt'
 
         properties([pipelineTriggers([cron('H/15 * * * *')])])
