@@ -15,7 +15,7 @@ node {
     
     def toolbelt = tool 'toolbelt'
 
-    properties([pipelineTriggers([cron('H 10 * * * *')])])
+    properties([pipelineTriggers([cron('H/15 * * * *')])])
     // -------------------------------------------------------------------------
     // Check out code from source control.
     // -------------------------------------------------------------------------
