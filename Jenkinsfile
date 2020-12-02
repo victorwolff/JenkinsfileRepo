@@ -3,10 +3,7 @@
 import groovy.json.JsonSlurperClassic
 String cron_string = BRANCH_NAME == "master" ? "@hourly" : ""
 
-pipeline {
-
-    agent none
-    triggers { cron(cron_string) }
+node {
     stages{
         def SF_CONSUMER_KEY=env.SF_CONSUMER_KEY
         def SF_USERNAME=env.SF_USERNAME
@@ -18,7 +15,7 @@ pipeline {
         echo BUILD_CAUSE
         def toolbelt = tool 'toolbelt'
 
-        properties([pipelineTriggers([cron('H/15 * * * *')])])
+        properties([pipelineTriggers([cron('H 10 * * * *')])])
         // -------------------------------------------------------------------------
         // Check out code from source control.
         // -------------------------------------------------------------------------
