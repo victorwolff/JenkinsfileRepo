@@ -50,7 +50,9 @@ node {
             // Run unit tests in test sandbox.
             // -------------------------------------------------------------------------
             stage('Rodando testes em UAT') {
-                rc = command "\"${toolbelt}\" force:apex:test:run --targetusername ${SF_ORG_ALIAS} --wait 10 --resultformat tap --codecoverage --testlevel ${TEST_LEVEL}"
+                 
+                 rc = command "\"${toolbelt}\" force:apex:test:run -c -u ${SF_ORG_ALIAS}  -r human"
+                //rc = command "\"${toolbelt}\" force:apex:test:run --targetusername ${SF_ORG_ALIAS} --wait 10 --resultformat tap --codecoverage --testlevel ${TEST_LEVEL}"
                 if (rc != 0) {
                     error 'Salesforce unit test run in UAT failed.'
                 }
