@@ -38,7 +38,7 @@ node {
             // -------------------------------------------------------------------------
 
             stage('Login em UAT') {
-                rc = command "\"${toolbelt}\" force:auth:jwt:grant --instanceurl ${SF_INSTANCE_URL} --clientid ${SF_CONSUMER_KEY} --username ${SF_USERNAME} --jwtkeyfile ${server_key_file} --setdefaultusername --setalias ${SF_ORG_ALIAS}"
+                rc = command "\"${toolbelt}\" force:auth:jwt:grant --instanceurl ${SF_INSTANCE_URL} --clientid ${SF_CONSUMER_KEY} --username ${SF_USERNAME} --jwtkeyfile ${server_key_file} --setdefaultusername --setalias ${SF_ORG_ALIAS_UAT}"
                 //force:auth:jwt:grant --clientid ${CONNECTED_APP_CONSUMER_KEY} --username ${HUB_ORG} --jwtkeyfile \"${jwt_key_file}\" --setdefaultdevhubusername --instanceurl ${SFDC_HOST}"
                 if (rc != 0) {
                     error 'Salesforce org authorization failed.'
@@ -51,8 +51,8 @@ node {
             // -------------------------------------------------------------------------
             stage('Rodando testes em UAT') {
                  
-                 rc = command "\"${toolbelt}\" force:apex:test:run -c -u ${SF_ORG_ALIAS}  -r human"
-                //rc = command "\"${toolbelt}\" force:apex:test:run --targetusername ${SF_ORG_ALIAS} --wait 10 --resultformat tap --codecoverage --testlevel ${TEST_LEVEL}"
+                 rc = command "\"${toolbelt}\" force:apex:test:run -c -u ${SF_ORG_ALIAS_UAT}  -r human"
+                //rc = command "\"${toolbelt}\" force:apex:test:run --targetusername ${SF_ORG_ALIAS_UAT} --wait 10 --resultformat tap --codecoverage --testlevel ${TEST_LEVEL}"
                 if (rc != 0) {
                     error 'Salesforce unit test run in UAT failed.'
                 }
